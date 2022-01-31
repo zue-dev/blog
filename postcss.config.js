@@ -1,3 +1,7 @@
 module.exports = {
-  plugins: [require("tailwindcss"), require("postcss-flexbugs-fixes")],
+  plugins: {
+    tailwindcss: {},
+    "postcss-flexbugs-fixes": {},
+  },
 };
+z;
