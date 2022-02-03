@@ -7,6 +7,12 @@ const Home: NextPage = () => {
     <>
       <Head>
         <title>zue</title>
+        <meta property="og:title" content="zue log" />
+        <meta property="og:url" content="https://blog-delta-cyan.vercel.app" />
+        <meta property="og:type" content="blog" />
+        <meta property="og:image" content="images/memoji2" />
+        <meta property="og:site_name" content="zue_log" />
+        <meta property="og:description" content="자유붕방 블로그" />
       </Head>
       <article className="text-center">
         <Image
@@ -16,8 +22,7 @@ const Home: NextPage = () => {
           height={200}
           className="rounded-full"
         />
-        <h1>zue log</h1>
-        <p>환영합니다 :)</p>
+        <p>자기소개 자기소개 자기소개 자기소개 자기소개 자기소개 자기소개 </p>
       </article>
     </>
   );
