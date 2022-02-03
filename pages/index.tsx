@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { getIssues } from "../lib/api";
+import { getIssues, IRepositoryNode } from "../lib/api";
 
 const Home: NextPage = () => {
   const [posts, setPosts] = useState<any>([]);
@@ -39,7 +39,7 @@ const Home: NextPage = () => {
           <p className="font-bold">zue log</p>
         </article>
         <article>
-          {posts?.map((issue, idx) => (
+          {posts?.map((issue: IRepositoryNode, idx: number) => (
             <div key={idx}>{issue.node.title}</div>
           ))}
         </article>
