@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { getIssues, IRepositoryNode } from "../lib/api";
 
@@ -38,9 +39,30 @@ const Home: NextPage = () => {
           />
           <p className="font-bold">zue log</p>
         </article>
-        <article>
-          {posts?.map((issue: IRepositoryNode, idx: number) => (
-            <div key={idx}>{issue.node.title}</div>
+        <article className="mt-16">
+          {posts?.map((issue: IRepositoryNode) => (
+            <Link key={issue.node.databaseId} href="/">
+              <a className="flex justify-between mb-10">
+                <div className="basis-0 shrink grow pr-4">
+                  <p className="font-bold text-xl break-words mb-1">
+                    {issue.node.title}
+                  </p>
+                  <p className="text-xs text-gray-400">
+                    {issue.node.createdAt.toString().slice(0, 10)}
+                  </p>
+                </div>
+                {issue.node.comments.totalCount ? (
+                  <div className="flex items-center">
+                    <Image
+                      src="/images/bell.png"
+                      alt="comment"
+                      width={24}
+                      height={24}
+                    />
+                  </div>
+                ) : null}
+              </a>
+            </Link>
           ))}
         </article>
       </section>

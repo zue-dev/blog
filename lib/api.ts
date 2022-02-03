@@ -4,11 +4,16 @@ interface IRepositoryIssueComment {
   totalCount: number;
 }
 
+interface IRepositoryIssue {
+  databaseId: number;
+  title: string;
+  body: string;
+  createdAt: number;
+  comments: IRepositoryIssueComment;
+}
+
 export interface IRepositoryNode {
-  node: {
-    title: string;
-    comments: IRepositoryIssueComment;
-  };
+  node: IRepositoryIssue;
 }
 
 interface IRepositoryEdges {
@@ -30,18 +35,20 @@ export async function getIssues() {
 
   const repositoryQuery = `
     {
-        repository(owner: "zue-dev", name: "blog") {
-            issues(last: 3) {
-                edges {
-                    node {
-                        title
-                        comments {
-                            totalCount
-                        }
-                    }
-                }
-            }
-        }
+      repository(owner: "zue-dev", name: "blog") {
+          issues(last: 10, states: [OPEN], orderBy: {field: UPDATED_AT, direction: DESC}) {
+              edges {
+                  node {
+                      databaseId
+                      title
+                      createdAt
+                      comments {
+                          totalCount
+                      }
+                  }
+              }
+          }
+      }
     }
   `;
 
