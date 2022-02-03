@@ -24,7 +24,7 @@ const Home: NextPage = () => {
         <meta property="og:title" content="zue log" />
         <meta property="og:url" content="https://blog-delta-cyan.vercel.app" />
         <meta property="og:type" content="blog" />
-        <meta property="og:image" content="images/memoji2" />
+        <meta property="og:image" content="/images/memoji2" />
         <meta property="og:site_name" content="zue_log" />
         <meta property="og:description" content="자유붕방 블로그" />
       </Head>
