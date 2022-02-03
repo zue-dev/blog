@@ -4,11 +4,7 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {
-      fontFamily: {
-        sans: ["Pretendard", "sans-serif"],
-      },
-    },
+    extend: {},
   },
   plugins: [],
 };

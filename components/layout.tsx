@@ -5,7 +5,7 @@ const Layout: FC = ({ children }) => {
   return (
     <div className="max-w-4xl mx-auto px-8">
       <header>
-        <nav className="flex justify-between items-center h-12">
+        <nav className="flex justify-between items-center h-24 text-xl">
           <Link href="/">
             <a className="font-black">HOME</a>
           </Link>
