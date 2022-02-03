@@ -1,8 +1,21 @@
 import type { NextPage } from "next";
-import Image from "next/image";
 import Head from "next/head";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import { getIssues } from "../lib/api";
 
 const Home: NextPage = () => {
+  const [posts, setPosts] = useState<any>([]);
+  useEffect(() => {
+    getIssues()
+      .then((res) => {
+        setPosts(res?.repository.issues.edges);
+      })
+      .catch((e) => {
+        setPosts([{ node: { title: `데이터 불러오기 실패 ${e}` } }]);
+      });
+  }, []);
+
   return (
     <>
       <Head>
@@ -14,16 +27,23 @@ const Home: NextPage = () => {
         <meta property="og:site_name" content="zue_log" />
         <meta property="og:description" content="자유붕방 블로그" />
       </Head>
-      <article className="text-center">
-        <Image
-          src="/images/memoji2.png"
-          alt="profile"
-          width={200}
-          height={200}
-          className="rounded-full"
-        />
-        <p>자기소개 자기소개 자기소개 자기소개 자기소개 자기소개 자기소개 </p>
-      </article>
+      <section>
+        <article className="text-center">
+          <Image
+            src="/images/memoji2.png"
+            alt="profile"
+            width={200}
+            height={200}
+            className="rounded-full"
+          />
+          <p className="font-bold">zue log</p>
+        </article>
+        <article>
+          {posts?.map((issue, idx) => (
+            <div key={idx}>{issue.node.title}</div>
+          ))}
+        </article>
+      </section>
     </>
   );
 };
