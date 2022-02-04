@@ -41,7 +41,10 @@ const Home: NextPage = () => {
         </article>
         <article className="mt-16">
           {posts?.map((issue: IRepositoryNode) => (
-            <Link key={issue.node.databaseId} href="/">
+            <Link
+              key={issue.node.number}
+              href={`/${encodeURIComponent(issue.node.number)}`}
+            >
               <a className="flex justify-between mb-10">
                 <div className="basis-0 shrink grow pr-4">
                   <p className="font-bold text-xl break-words mb-1">
