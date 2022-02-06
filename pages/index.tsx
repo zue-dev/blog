@@ -22,7 +22,10 @@ const Home: NextPage = () => {
       <Head>
         <title>zue</title>
         <meta property="og:title" content="zue log" />
-        <meta property="og:url" content="https://blog-delta-cyan.vercel.app" />
+        <meta
+          property="og:url"
+          content="https://blog-delta-cyan.vercel.app/_next/image?url=%2Fimages%2Fmemoji2.png&w=640&q=75"
+        />
         <meta property="og:type" content="blog" />
         <meta property="og:image" content="/images/memoji2" />
         <meta property="og:site_name" content="zue_log" />
@@ -37,17 +40,17 @@ const Home: NextPage = () => {
             height={200}
             className="rounded-full"
           />
-          <p className="font-bold">zue log</p>
+          {/* <p className="font-bold">zue log</p> */}
         </article>
-        <article className="mt-16">
+        <article className="my-16">
           {posts?.map((issue: IRepositoryNode) => (
             <Link
               key={issue.node.number}
               href={`/${encodeURIComponent(issue.node.number)}`}
             >
-              <a className="flex justify-between mb-10">
-                <div className="basis-0 shrink grow pr-4">
-                  <p className="font-bold text-xl break-words mb-1">
+              <a className="mb-10 flex justify-between last:mb-0">
+                <div className="shrink grow basis-0 pr-4">
+                  <p className="mb-1 break-words text-xl font-bold">
                     {issue.node.title}
                   </p>
                   <p className="text-xs text-gray-400">
@@ -57,6 +60,7 @@ const Home: NextPage = () => {
                 {issue.node.comments.totalCount ? (
                   <div className="flex items-center">
                     <Image
+                      // TODO: bell 말고 깃헙 댓글 아이콘으로 변경하고싶음
                       src="/images/bell.png"
                       alt="comment"
                       width={24}

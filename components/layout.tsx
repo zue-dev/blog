@@ -3,9 +3,9 @@ import { FC } from "react";
 
 const Layout: FC = ({ children }) => {
   return (
-    <div className="max-w-4xl mx-auto px-8">
+    <div className="max-w-3xl mx-auto px-8">
       <header>
-        <nav className="flex justify-between items-center h-24 text-xl">
+        <nav className="flex justify-between items-center h-24 text-xl lg:text-2xl">
           <Link href="/">
             <a className="font-black">HOME</a>
           </Link>

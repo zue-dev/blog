@@ -26,11 +26,15 @@ interface IRepository {
   };
 }
 
-interface IIssue {
+export interface IIssue {
+  title: string;
+  body: string;
+  createdAt: string;
+}
+
+interface IIssueResponse {
   repository: {
-    issue: {
-      body: string;
-    };
+    issue: IIssue;
   };
 }
 
@@ -77,14 +81,16 @@ export async function getIssue(id: number) {
     {
       repository(owner: "zue-dev", name: "blog") {
         issue(number: ${id}) { 
+          title
           body
+          createdAt
         }
       }
     }
   `;
 
   try {
-    const issue: IIssue = await graphqlWithAuth(issueQuery);
+    const issue: IIssueResponse = await graphqlWithAuth(issueQuery);
     return issue;
   } catch (e) {
     throw e;
