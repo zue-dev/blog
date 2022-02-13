@@ -35,4 +35,8 @@
   pre code {
     @apply my-4 block whitespace-pre rounded-none p-2 lg:p-4;
   }
+
+  a {
+    @apply text-blue-500 underline;
+  }
 }
