@@ -4,15 +4,18 @@ import { useEffect, useState } from "react";
 import { getIssue, IIssue } from "../../lib/api";
 import ReactMarkdown from "react-markdown";
 import styles from "../../styles/post.module.scss";
+import { useUtterance } from "../../lib/hooks/useUtterance";
 
 const Post: NextPage = () => {
+  const router = useRouter();
+  const { id } = router.query;
   const [issue, setIssue] = useState<IIssue>({
     title: "",
     body: "",
     createdAt: "",
   });
-  const router = useRouter();
-  const { id } = router.query;
+
+  useUtterance(id as string);
 
   useEffect(() => {
     if (id) {
@@ -35,9 +38,10 @@ const Post: NextPage = () => {
         <p className="text-sm text-gray-400">{issue.createdAt.slice(0, 10)}</p>
         <hr className="mt-4" />
       </div>
-      <div className={`mb-16 ${styles.content}`}>
+      <div className={styles.content}>
         <ReactMarkdown>{issue.body}</ReactMarkdown>
       </div>
+      <div className="my-16" id={`issue${id}-comment`}></div>
     </>
   );
 };
