@@ -1,0 +1,35 @@
+.image {
+  @apply text-center;
+}
+
+.content {
+  @apply my-16;
+}
+
+.link {
+  @apply mb-10 flex justify-between last:mb-0;
+
+  &:hover .title {
+    @apply text-yellow-600;
+  }
+}
+
+.titleWrap {
+  @apply shrink grow basis-0 pr-4;
+}
+
+.title {
+  @apply mb-1 break-words text-xl font-bold;
+}
+
+.date {
+  @apply text-xs text-gray-400;
+}
+
+.iconWrap {
+  @apply flex items-center;
+}
+
+.count {
+  @apply ml-1 text-xs text-gray-600;
+}
